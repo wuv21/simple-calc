@@ -30,8 +30,26 @@ class InputtedNumbers {
         return nil;
     }
     
+    func sum() -> Int {
+        var sum = 0
+        for n in nums {
+            sum += n
+        }
+        
+        return sum
+    }
+    
     func clear() {
-        nums = []
+        nums = [];
+    }
+    
+    func fact() -> Int {
+        var prod = 1
+        for n in 1...lastNum()! + 1 {
+            prod = prod * n
+        }
+        
+        return prod
     }
 }
 
@@ -43,11 +61,18 @@ class InputtedOps {
         ops = [];
     }
     
-    func lastOp() -> String? {
-        return ops[ops.count - 1]
+    func lastOp() -> String {
+        if ops.count >= 1 {
+            return ops[ops.count - 1]
+        }
+        return ""
     }
     
     func clear() {
         ops = []
+    }
+    
+    func saveLast(o : String?) {
+        ops = [o!]
     }
 }

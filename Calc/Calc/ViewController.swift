@@ -32,20 +32,55 @@ class ViewController: UIViewController {
         NSLog(String(numInputs.nums))
     }
     
+    @IBAction func btn_clear(sender: UIButton) {
+        numInputs.clear()
+        opInputs.clear()
+        resultTxt.text = "0"
+    }
     @IBAction func btn_ops(sender: UIButton) {
         let op = sender.titleLabel!.text!
+        
         
         opInputs.ops.append(op);
         NSLog(String(opInputs.ops))
     }
     
     @IBAction func btn_equal(sender: UIButton) {
-        switch opInputs.lastOp()! {
+        var ans : Int?
+        
+        switch opInputs.lastOp() {
         case "+":
-            resultTxt.text = String(numInputs.lastNum()! + numInputs.secondLastNum()!);
+            ans = numInputs.secondLastNum()! + numInputs.lastNum()!;
+        case "-":
+            ans = numInputs.secondLastNum()! - numInputs.lastNum()!;
+        case "x":
+            ans = numInputs.secondLastNum()! * numInputs.lastNum()!;
+        case "/":
+            ans = numInputs.secondLastNum()! / numInputs.lastNum()!;
+        case "%":
+            ans = numInputs.secondLastNum()! % numInputs.lastNum()!;
+        case "Count":
+            ans = numInputs.nums.count
+        case "Avg":
+            ans = numInputs.sum() / numInputs.nums.count
+        case "Fact":
+            if numInputs.nums.count > 1 {
+                let alert = UIAlertController(title: "Unable to proceed", message: "Please clear inputs and input only one number for factorial operation.", preferredStyle:UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+                
+                ans = 0
+            } else {
+                ans = numInputs.fact()
+            }
         default:
-            resultTxt.text = "N/A";
+            ans = 0
         }
+        
+        resultTxt.text = String(ans!)
+        numInputs.clear()
+        opInputs.clear()
+        
     }
     
 }
