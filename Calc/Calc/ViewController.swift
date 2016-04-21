@@ -63,7 +63,7 @@ class ViewController: UIViewController {
         inputs.nums.append(n!);
         inputs.presses.append(op);
         
-        if calcMode == 1 && op != "Enter" {
+        if calcMode == 1 && op != "Enter" && inputs.nums.count > 1 {
             calculate()
         }
     }
