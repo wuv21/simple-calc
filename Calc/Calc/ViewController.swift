@@ -20,8 +20,7 @@ class ViewController: UIViewController {
     }
     
     ///////////////
-    let numInputs : InputtedNumbers = InputtedNumbers()
-    let opInputs : InputtedOps = InputtedOps()
+    let inputs : Inputs = Inputs()
 
     @IBOutlet weak var resultTxt: UITextField!
     @IBOutlet weak var state_enter: UIButton!
@@ -34,68 +33,83 @@ class ViewController: UIViewController {
         state_enter.enabled = calcMode != 0
         equal.enabled = calcMode == 0
         
-        numInputs.clear()
-        opInputs.clear()
+        inputs.clear()
         resultTxt.text = "0"
     }
     
     
     @IBAction func btn_nums(sender: UIButton) {
-        let n = Int(sender.titleLabel!.text!)
+        let n = sender.titleLabel!.text!
+
+        if inputs.checkPrevDbl() {
+            resultTxt.text = resultTxt.text! + n
+        } else {
+            resultTxt.text = n;
+        }
         
-        numInputs.nums.append(n!);
-        resultTxt.text = String(n!);
-        NSLog(String(numInputs.nums))
+        inputs.presses.append(n);
+        NSLog(String(inputs.nums))
     }
     
     @IBAction func btn_clear(sender: UIButton) {
-        numInputs.clear()
-        opInputs.clear()
-        resultTxt.text = "0"
+        inputs.clear()
+        resultTxt.text = ""
     }
     @IBAction func btn_ops(sender: UIButton) {
         let op = sender.titleLabel!.text!
+        inputs.lastOp = op
         
-        opInputs.ops.append(op);
-        NSLog(String(opInputs.ops))
+        let n : Double? = Double(resultTxt.text!)
+        inputs.nums.append(n!);
+        inputs.presses.append(op);
+        
+        if calcMode == 1 && op != "Enter" {
+            calculate()
+        }
     }
     
-    @IBAction func btn_equal(sender: UIButton) {
-        var ans : Int?
+    func calculate() {
+        var ans : Double?
         
-        switch opInputs.lastOp() {
+        switch inputs.lastOp {
         case "+":
-            ans = numInputs.secondLastNum()! + numInputs.lastNum()!;
+            ans = inputs.secondLastNum()! + inputs.lastNum()!;
         case "-":
-            ans = numInputs.secondLastNum()! - numInputs.lastNum()!;
+            ans = inputs.secondLastNum()! - inputs.lastNum()!;
         case "x":
-            ans = numInputs.secondLastNum()! * numInputs.lastNum()!;
+            ans = inputs.secondLastNum()! * inputs.lastNum()!;
         case "/":
-            ans = numInputs.secondLastNum()! / numInputs.lastNum()!;
+            ans = inputs.secondLastNum()! / inputs.lastNum()!;
         case "%":
-            ans = numInputs.secondLastNum()! % numInputs.lastNum()!;
+            ans = inputs.secondLastNum()! % inputs.lastNum()!;
         case "Count":
-            ans = numInputs.nums.count
+            ans = Double(inputs.nums.count)
         case "Avg":
-            ans = numInputs.sum() / numInputs.nums.count
+            ans = inputs.sum() / Double(inputs.nums.count)
         case "Fact":
-            if numInputs.nums.count > 1 {
+            inputs.nums.popLast()
+            if inputs.nums.count > 1 {
                 let alert = UIAlertController(title: "Unable to proceed", message: "Please clear inputs and input only one number for factorial operation.", preferredStyle:UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)
                 
-                ans = 0
+                ans = 0.0
             } else {
-                ans = numInputs.fact()
+                ans = inputs.fact()
             }
         default:
-            ans = numInputs.lastNum();
+            ans = inputs.lastNum();
         }
         
         resultTxt.text = String(ans!)
-        numInputs.clear()
-        opInputs.clear()
+        inputs.clear()
+    }
+    
+    @IBAction func btn_equal(sender: UIButton) {
+        let n : Double? = Double(resultTxt.text!)
+        inputs.nums.append(n!);
         
+        calculate()
     }
     
 }
