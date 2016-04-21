@@ -24,11 +24,27 @@ class ViewController: UIViewController {
     let opInputs : InputtedOps = InputtedOps()
 
     @IBOutlet weak var resultTxt: UITextField!
+    @IBOutlet weak var state_enter: UIButton!
+    @IBOutlet weak var equal: UIButton!
+    var calcMode = 0
+    
+    @IBAction func modeToggle(sender: AnyObject) {
+        calcMode = sender.selectedSegmentIndex!
+        
+        state_enter.enabled = calcMode != 0
+        equal.enabled = calcMode == 0
+        
+        numInputs.clear()
+        opInputs.clear()
+        resultTxt.text = "0"
+    }
+    
     
     @IBAction func btn_nums(sender: UIButton) {
         let n = Int(sender.titleLabel!.text!)
         
         numInputs.nums.append(n!);
+        resultTxt.text = String(n!);
         NSLog(String(numInputs.nums))
     }
     
@@ -39,7 +55,6 @@ class ViewController: UIViewController {
     }
     @IBAction func btn_ops(sender: UIButton) {
         let op = sender.titleLabel!.text!
-        
         
         opInputs.ops.append(op);
         NSLog(String(opInputs.ops))
@@ -74,7 +89,7 @@ class ViewController: UIViewController {
                 ans = numInputs.fact()
             }
         default:
-            ans = 0
+            ans = numInputs.lastNum();
         }
         
         resultTxt.text = String(ans!)
