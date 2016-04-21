@@ -192,7 +192,10 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sdW-1B-JE7">
                                 <rect key="frame" x="213" y="385" width="55" height="30"/>
                                 <color key="backgroundColor" red="0.5568627451" green="0.15686274510000001" blue="0.0" alpha="0.28999999999999998" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Clear"/>
+                                <state key="normal" title="Enter"/>
+                                <connections>
+                                    <action selector="btn_ops:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wPu-gN-x4D"/>
+                                </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="uDY-kk-Bh2">
                                 <rect key="frame" x="43" y="385" width="141" height="29"/>
@@ -204,6 +207,13 @@
                                     <action selector="modeToggle:" destination="BYZ-38-t0r" eventType="valueChanged" id="F1j-n6-2Tk"/>
                                 </connections>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6GG-HH-HaB">
+                                <rect key="frame" x="111" y="421" width="30" height="30"/>
+                                <state key="normal" title="."/>
+                                <connections>
+                                    <action selector="btn_nums:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OBP-Nz-77a"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>

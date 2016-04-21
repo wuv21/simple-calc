@@ -9,70 +9,86 @@
 import Foundation
 
 // Numbers that have been inputted
-class InputtedNumbers {
-    var nums : [Int]
+class Inputs {
+    var presses : [String]
+    var nums : [Double]
+    var lastOp : String
     
     init() {
+        presses = []
+        nums = []
+        lastOp = ""
+    }
+    
+    func checkPrevDbl() -> Bool {
+        if presses.count >= 1 {
+            let prev = presses[presses.count - 1]
+            
+            if Int(prev) != nil || prev == "." {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func clear() {
+        presses = []
         nums = []
     }
     
-    func lastNum() -> Int? {
-        if nums.count >= 1 {
-            return nums[nums.count - 1]
-        }
-        return nil;
-    }
-    
-    func secondLastNum() -> Int? {
+    func secondLastNum() -> Double? {
         if nums.count >= 2 {
             return nums[nums.count - 2]
         }
-        return nil;
+        return nil
     }
     
-    func sum() -> Int {
-        var sum = 0
+    func lastNum() -> Double? {
+        if nums.count >= 1 {
+            return nums[nums.count - 1]
+        }
+        return nil
+    }
+    
+    func sum() -> Double {
+        var total = 0.0
         for n in nums {
-            sum += n
+            total = total + n
         }
         
-        return sum
+        return total
     }
     
-    func clear() {
-        nums = [];
-    }
-    
-    func fact() -> Int {
-        var prod = 1
-        for n in 1...lastNum()! + 1 {
-            prod = prod * n
+    func fact() -> Double {
+        var total = 1
+        for i in 1...Int(nums[nums.count - 1]) {
+            total = total * i
         }
         
-        return prod
+        return Double(total)
     }
 }
 
-// Operations that have been inputted
-class InputtedOps {
-    var ops : [String]
-    
-    init() {
-        ops = [];
-    }
-    
-    func lastOp() -> String {
-        if ops.count >= 1 {
-            return ops[ops.count - 1]
-        }
-        return ""
-    }
-    
-    func clear() {
-        ops = []
-    }
-    
-    func saveLast(o : String?) {
-        ops = [o!]
-    }
-}
+//// Operations that have been inputted
+//class InputtedOps {
+//    var ops : [String]
+//    
+//    init() {
+//        ops = [];
+//    }
+//    
+//    func lastOp() -> String {
+//        if ops.count >= 1 {
+//            return ops[ops.count - 1]
+//        }
+//        return ""
+//    }
+//    
+//    func clear() {
+//        ops = []
+//    }
+//    
+//    func saveLast(o : String?) {
+//        ops = [o!]
+//    }
+//}
