@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         if (segue.identifier == "historySegue") {
             let svc = segue.destinationViewController as! HistoryViewController;
             
-            svc.toPass = inputs.history
+            svc.equations = inputs.history
         }
     }
     

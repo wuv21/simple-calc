@@ -16,8 +16,7 @@ class HistoryViewController: UIViewController {
         history.contentSize = CGSizeMake(400, 2300)
         
         var number: CGFloat = 30
-        for equation in toPass
-        {
+        for equation in equations {
             let label = UILabel(frame: CGRectMake(50, number, 300, 21))
             label.center = CGPointMake(150, number)
             label.textAlignment = NSTextAlignment.Left
@@ -33,7 +32,7 @@ class HistoryViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    var toPass: [String]!
+    var equations: [String]!
     
     @IBOutlet weak var history: UIScrollView!
 
