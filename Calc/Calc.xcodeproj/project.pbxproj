@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4944332F1CCF29EF009F5571 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4944332E1CCF29EF009F5571 /* HistoryViewController.swift */; };
 		4999F8591CC7F6C000036C18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4999F8581CC7F6C000036C18 /* AppDelegate.swift */; };
 		4999F85B1CC7F6C000036C18 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4999F85A1CC7F6C000036C18 /* ViewController.swift */; };
 		4999F85E1CC7F6C000036C18 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4999F85C1CC7F6C000036C18 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4944332E1CCF29EF009F5571 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		4999F8551CC7F6C000036C18 /* Calc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4999F8581CC7F6C000036C18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4999F85A1CC7F6C000036C18 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 		4999F8571CC7F6C000036C18 /* Calc */ = {
 			isa = PBXGroup;
 			children = (
+				4944332E1CCF29EF009F5571 /* HistoryViewController.swift */,
 				4999F8581CC7F6C000036C18 /* AppDelegate.swift */,
 				4999F85A1CC7F6C000036C18 /* ViewController.swift */,
 				4999F86A1CC8038500036C18 /* AppModel.swift */,
@@ -142,6 +145,7 @@
 				4999F85B1CC7F6C000036C18 /* ViewController.swift in Sources */,
 				4999F86B1CC8038500036C18 /* AppModel.swift in Sources */,
 				4999F8591CC7F6C000036C18 /* AppDelegate.swift in Sources */,
+				4944332F1CCF29EF009F5571 /* HistoryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,11 +13,13 @@ class Inputs {
     var presses : [String]
     var nums : [Double]
     var lastOp : String
+    var history : [String]
     
     init() {
         presses = []
         nums = []
         lastOp = ""
+        history = []
     }
     
     func checkPrevDbl() -> Bool {

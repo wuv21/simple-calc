@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +19,14 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "historySegue") {
+            let svc = segue.destinationViewController as! HistoryViewController;
+            
+            svc.toPass = inputs.history
+        }
     }
     
     ///////////////
@@ -70,22 +80,30 @@ class ViewController: UIViewController {
     
     func calculate() {
         var ans : Double?
+        var equation : String?
         
         switch inputs.lastOp {
         case "+":
-            ans = inputs.secondLastNum()! + inputs.lastNum()!;
+            ans = inputs.secondLastNum()! + inputs.lastNum()!
+            equation = "\(String(inputs.secondLastNum()!)) + \(String(inputs.lastNum()!)) = \(String(ans!))"
         case "-":
-            ans = inputs.secondLastNum()! - inputs.lastNum()!;
+            ans = inputs.secondLastNum()! - inputs.lastNum()!
+            equation = "\(String(inputs.secondLastNum()!)) - \(String(inputs.lastNum()!)) = \(String(ans!))"
         case "x":
-            ans = inputs.secondLastNum()! * inputs.lastNum()!;
+            ans = inputs.secondLastNum()! * inputs.lastNum()!
+            equation = "\(String(inputs.secondLastNum()!)) * \(String(inputs.lastNum()!)) = \(String(ans!))"
         case "/":
-            ans = inputs.secondLastNum()! / inputs.lastNum()!;
+            ans = inputs.secondLastNum()! / inputs.lastNum()!
+            equation = "\(String(inputs.secondLastNum()!)) / \(String(inputs.lastNum()!)) = \(String(ans!))"
         case "%":
-            ans = inputs.secondLastNum()! % inputs.lastNum()!;
+            ans = inputs.secondLastNum()! % inputs.lastNum()!
+            equation = "\(String(inputs.secondLastNum()!)) % \(String(inputs.lastNum()!)) = \(String(ans!))"
         case "Count":
             ans = Double(inputs.nums.count)
+            equation = "Count(\(String(inputs))) = \(String(ans!))"
         case "Avg":
             ans = inputs.sum() / Double(inputs.nums.count)
+            equation = "Avg(\(String(inputs))) = \(String(ans!))"
         case "Fact":
             inputs.nums.popLast()
             if inputs.nums.count > 1 {
@@ -96,13 +114,16 @@ class ViewController: UIViewController {
                 ans = 0.0
             } else {
                 ans = inputs.fact()
+                equation = "Fact(\(String(inputs))) = \(String(ans!))"
             }
         default:
             ans = inputs.lastNum();
+            equation = "";
         }
         
         resultTxt.text = String(ans!)
         inputs.clear()
+        inputs.history.append(equation!)
     }
     
     @IBAction func btn_equal(sender: UIButton) {
@@ -111,6 +132,7 @@ class ViewController: UIViewController {
         
         calculate()
     }
+    
     
 }
 
