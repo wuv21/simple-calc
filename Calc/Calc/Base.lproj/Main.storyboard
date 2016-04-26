@@ -421,7 +421,7 @@
                                 <rect key="frame" x="26" y="28" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="Qdq-0t-1B4"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="viewSegue" id="Qdq-0t-1B4"/>
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NIS-Jf-Zqg">

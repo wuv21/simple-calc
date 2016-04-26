@@ -32,6 +32,14 @@ class HistoryViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "viewSegue") {
+            let svc = segue.destinationViewController as! ViewController;
+            
+            svc.allEquations = equations
+        }
+    }
+    
     var equations: [String]!
     
     @IBOutlet weak var history: UIScrollView!

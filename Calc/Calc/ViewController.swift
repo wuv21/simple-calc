@@ -25,7 +25,10 @@ class ViewController: UIViewController {
         if (segue.identifier == "historySegue") {
             let svc = segue.destinationViewController as! HistoryViewController;
             
-            svc.equations = inputs.history
+            for i in inputs.history {
+                allEquations.append(i)
+            }
+            svc.equations = allEquations
         }
     }
     
@@ -36,6 +39,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var state_enter: UIButton!
     @IBOutlet weak var equal: UIButton!
     var calcMode = 0
+    var allEquations : [String] = []
     
     @IBAction func modeToggle(sender: AnyObject) {
         calcMode = sender.selectedSegmentIndex!
