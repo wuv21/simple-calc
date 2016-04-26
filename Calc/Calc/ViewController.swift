@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +19,15 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "segueTest") {
+            let svc = segue.destinationViewController as! HistoryViewController;
+            
+            svc.toPass = equal.titleLabel!.text!
+            
+        }
     }
     
     ///////////////
@@ -111,6 +122,7 @@ class ViewController: UIViewController {
         
         calculate()
     }
+    
     
 }
 
