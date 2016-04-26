@@ -216,7 +216,7 @@
                                 <color key="backgroundColor" red="0.55686274509803924" green="0.15686274509803921" blue="0.0" alpha="0.28999999999999998" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="History"/>
                                 <connections>
-                                    <segue destination="HpB-CL-abR" kind="show" id="bJK-eQ-vE5"/>
+                                    <segue destination="HpB-CL-abR" kind="show" identifier="historySegue" id="bJK-eQ-vE5"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qSs-mZ-wfb">
@@ -424,28 +424,19 @@
                                     <segue destination="BYZ-38-t0r" kind="show" id="Qdq-0t-1B4"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bp8-vy-nFi">
-                                <rect key="frame" x="94" y="28" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="test:" destination="HpB-CL-abR" eventType="touchUpInside" id="jHZ-Jd-FUe"/>
-                                </connections>
-                            </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NIS-Jf-Zqg">
                                 <rect key="frame" x="20" y="60" width="560" height="520"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Bp8-vy-nFi" firstAttribute="top" secondItem="g8C-Rk-2lG" secondAttribute="bottom" constant="8" id="BCC-XN-5fD"/>
                             <constraint firstItem="NIS-Jf-Zqg" firstAttribute="leading" secondItem="4tY-VY-gqn" secondAttribute="leadingMargin" id="FGf-pX-ozG"/>
                             <constraint firstItem="BmR-Fq-vzF" firstAttribute="leading" secondItem="4tY-VY-gqn" secondAttribute="leadingMargin" constant="6" id="FK2-Q7-a7e"/>
-                            <constraint firstItem="NIS-Jf-Zqg" firstAttribute="top" secondItem="Bp8-vy-nFi" secondAttribute="bottom" constant="2" id="G6H-Kn-F8c"/>
-                            <constraint firstItem="Bp8-vy-nFi" firstAttribute="leading" secondItem="BmR-Fq-vzF" secondAttribute="trailing" constant="34" id="Hni-SG-STl"/>
                             <constraint firstItem="BmR-Fq-vzF" firstAttribute="top" secondItem="g8C-Rk-2lG" secondAttribute="bottom" constant="8" id="Qr1-nj-ZSU"/>
                             <constraint firstItem="NIS-Jf-Zqg" firstAttribute="leading" secondItem="4tY-VY-gqn" secondAttribute="leadingMargin" id="W7a-h2-yGh"/>
                             <constraint firstItem="myn-4H-QXm" firstAttribute="top" secondItem="NIS-Jf-Zqg" secondAttribute="bottom" constant="20" id="dQ3-H8-SIu"/>
                             <constraint firstItem="myn-4H-QXm" firstAttribute="top" secondItem="NIS-Jf-Zqg" secondAttribute="bottom" constant="20" id="kJ9-M8-ZeX"/>
+                            <constraint firstItem="NIS-Jf-Zqg" firstAttribute="top" secondItem="BmR-Fq-vzF" secondAttribute="bottom" constant="2" id="lIf-0h-Yng"/>
                             <constraint firstItem="NIS-Jf-Zqg" firstAttribute="trailing" secondItem="4tY-VY-gqn" secondAttribute="trailingMargin" id="oMD-WQ-AJ4"/>
                             <constraint firstItem="NIS-Jf-Zqg" firstAttribute="trailing" secondItem="4tY-VY-gqn" secondAttribute="trailingMargin" id="zrz-SR-Bki"/>
                         </constraints>

@@ -13,7 +13,19 @@ class HistoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        history.contentSize = CGSizeMake(200, 2300)
+        history.contentSize = CGSizeMake(400, 2300)
+        
+        var number: CGFloat = 30
+        for equation in toPass
+        {
+            let label = UILabel(frame: CGRectMake(50, number, 300, 21))
+            label.center = CGPointMake(150, number)
+            label.textAlignment = NSTextAlignment.Left
+            label.text = equation
+            number = number + 30
+            
+            self.history.addSubview(label)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,31 +33,10 @@ class HistoryViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    var toPass:String!
+    var toPass: [String]!
     
     @IBOutlet weak var history: UIScrollView!
-    
-    @IBAction func test(sender: AnyObject) {
-        NSLog(toPass);
-        
-        var number: CGFloat = 30
-        
-        for i in 1 ..< 100
-        {
-            let label = UILabel(frame: CGRectMake(0, number, 200, 21))
-            label.center = CGPointMake(50, number)
-            label.textAlignment = NSTextAlignment.Left
-            label.text = "I'am a test label \(i)"
-            self.view.addSubview(label)
-            number = number + 30
-            
-            self.history.addSubview(label)
-        }
-        
 
-    }
-    
-    
 
     /*
     // MARK: - Navigation
